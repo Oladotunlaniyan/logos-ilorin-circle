@@ -3,37 +3,42 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 
-const faqs = [
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+const faqs: FAQ[] = [
   {
-    question: "What is your return policy?",
-    answer: "We offer a 30-day money-back guarantee on all products. If you're not satisfied with your purchase, you can return it within 30 days for a full refund. Items must be in original condition with all packaging intact."
+    question: "What is Logos?",
+    answer: "Logos is a social movement and decentralised technology stack built to revitalise civil society, empower individuals, and enable decentralised, privacy-first applications and institutions that operate outside traditional power structures. The movement blends community organising with cutting-edge protocols for blockchain, messaging, and storage."
   },
   {
-    question: "How long does shipping take?",
-    answer: "Standard shipping typically takes 5-7 business days. Express shipping options are available at checkout and deliver within 2-3 business days. International orders may take 10-14 business days depending on the destination."
+    question: "What are Logos Circles?",
+    answer: "Logos Circles are local, community-run meetups where people come together to learn, discuss the Logos mission, collaborate on solutions to real issues in their community, and explore how decentralised technologies can be used for tangible impact."
   },
   {
-    question: "Do you offer international shipping?",
-    answer: "Yes, we ship to over 100 countries worldwide. Shipping costs and delivery times vary by location. You can see the exact cost and estimated delivery time at checkout before completing your purchase."
+    question: "What is Logos Circle Ilorin?",
+    answer: "Logos Circle Ilorin is the local chapter of the Logos movement in Ilorin, Nigeria. It brings together builders, thinkers, and organisers to explore decentralised solutions for local challenges, connect with like-minded peers, and begin real community projects aligned with the Logos ethos of freedom and autonomy."
   },
   {
-    question: "How can I track my order?",
-    answer: "Once your order ships, you'll receive a confirmation email with a tracking number. You can use this number to track your package on our website or directly on the carrier's website. You can also check your order status anytime by logging into your account."
+    question: "Who can join Logos Circle Ilorin?",
+    answer: "Anyone curious about decentralised systems, community organising, or who wants to use technology and collective action for local impact is welcome. You don't need specialised skills—just a willingness to engage, learn, and contribute."
   },
   {
-    question: "What payment methods do you accept?",
-    answer: "We accept all major credit cards (Visa, MasterCard, American Express, Discover), PayPal, Apple Pay, Google Pay, and Shop Pay. All transactions are secure and encrypted for your protection."
+    question: "Is there a cost to join or participate?",
+    answer: "No. Participation in Logos Circles and community events is typically free. Some activities may involve collaboration on specific projects that could have optional participation requirements, but joining the movement and local Circle is open to all."
   },
   {
-    question: "Can I modify or cancel my order?",
-    answer: "You can modify or cancel your order within 1 hour of placing it by contacting our customer service team. After this window, orders enter our fulfillment process and cannot be changed. However, you can always return items after receiving them."
+    question: "How do I stay updated or get involved?",
+    answer: "You can follow Logos' official channels, join community servers, and check event listings for Logos Circle meetups online or in your region. You can also reach out to the Logos team to propose or help start a Circle if one doesn't yet exist in your area."
   }
 ];
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggleFAQ = (index) => {
+  const toggleFAQ = (index: number): void => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
@@ -50,7 +55,7 @@ export default function FAQ() {
         </div>
 
         <div className="space-y-4">
-          {faqs.map((faq, index) => (
+          {faqs.map((faq: FAQ, index: number) => (
             <div
               key={index}
               className="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-200 hover:shadow-lg"
